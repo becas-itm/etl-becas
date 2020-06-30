@@ -3,9 +3,6 @@ import bonobo
 from etl.common.entities import EntityName
 from etl.common.date_parser import ISO_FORMAT
 
-from etl.tasks.icetex import calculate_academic_level, \
-    add_steps
-from etl.tasks.icetex.extract_country import extract_country
 from etl.tasks import read_raw_scholarhips, \
     add_timestamps, \
     add_pending_state, \
@@ -16,6 +13,10 @@ from etl.tasks import read_raw_scholarhips, \
     parse_funding_type, \
     capitalize_name, \
     calc_fill_status
+
+from etl.icetex.tasks.add_steps import add_steps
+from etl.icetex.tasks.extract_country import extract_country
+from etl.icetex.tasks.calculate_academic_level import calculate_academic_level
 
 
 def get_graph(**options):
