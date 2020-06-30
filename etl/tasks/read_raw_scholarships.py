@@ -1,16 +1,14 @@
-from itm.documents import RawScholarship
+from elasticsearch.helpers import scan
+
+from etl.config import elastic
 
 
 def read_raw_scholarhips(spider):
     def run_task():
-        search = RawScholarship.search() \
-            .filter('term', **{'spider.name': spider.value})
+        for hit in scan(elastic, query={'query': {'term': {'spider.name': spider.value}}}):
+            item = hit['_source'].copy()
 
-        for item in search.scan():
-            # Attach id to item
-            item_id = item.meta.id
-            item = item.to_dict()
-            item['id'] = item_id
+            item['id'] = hit['_id']  # Attach id to item
 
             yield item
 

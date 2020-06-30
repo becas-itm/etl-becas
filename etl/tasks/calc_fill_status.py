@@ -1,11 +1,17 @@
-from itm.publishing.domain.scholarship import Scholarship, FillStatus
+from etl.scholarship import FillStatus
 
 
-def current_status(doc):
-    scholarship = Scholarship.from_document(doc)
-    return FillStatus.COMPLETE if scholarship.is_complete else FillStatus.INCOMPLETE
+def is_complete(item):
+    fields = ['description', 'academicLevel', 'country', 'fundingType', 'language']
+
+    for field in fields:
+        if field not in item:
+            return False
+
+    return True
 
 
 def calc_fill_status(item):
-    item['fillStatus'] = current_status(item).value
+    item['fillStatus'] = FillStatus.COMPLETE.value if is_complete(
+        item) else FillStatus.INCOMPLETE.value
     return item

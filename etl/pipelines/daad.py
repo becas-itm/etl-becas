@@ -1,7 +1,5 @@
 import bonobo
 
-from itm.documents import connect_db
-
 from etl.common.entities import EntityName
 
 from etl.tasks import read_raw_scholarhips, \
@@ -35,7 +33,6 @@ def get_services(**options):
 
 
 if __name__ == '__main__':
-    connect_db()
     parser = bonobo.get_argument_parser()
     with bonobo.parse_args(parser) as options:
         bonobo.run(get_graph(**options), services=get_services(**options))

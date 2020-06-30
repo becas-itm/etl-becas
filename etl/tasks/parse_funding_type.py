@@ -1,4 +1,4 @@
-from itm.publishing.domain.scholarship import FundingType
+from etl.scholarship import FundingType
 
 
 partial_words = set(('parcial', 'partial'))

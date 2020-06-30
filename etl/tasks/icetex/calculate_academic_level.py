@@ -1,7 +1,7 @@
 import spacy
 from nltk.stem import SnowballStemmer
 
-from itm.publishing.domain.scholarship import AcademicLevel
+from etl.scholarship import AcademicLevel
 
 
 nlp = spacy.load('es_core_news_md')

@@ -1,4 +1,4 @@
-from itm.publishing.domain.scholarship import AcademicLevel
+from etl.scholarship import AcademicLevel
 
 
 POSTGRADUATE_LEVELS = ['graduates', 'doctoral candidates/phd students',
