@@ -11,7 +11,7 @@ from etl.tasks import read_raw_scholarhips, \
     capitalize_name, \
     calc_fill_status
 
-from etl.tasks.daad import calculate_academic_level
+from etl.daad.tasks.calculate_academic_level import calculate_academic_level
 
 
 def get_graph(**options):
